@@ -20,14 +20,12 @@ def task(ctx, param1=False, param2="default text", param3=8):
     Task template (on windows)!
     """
 
-    command = [
-        activate_VS2019_environment(),
-        [
+    CommandExecutor(ctx)\
+        .add_command(activate_VS2019_environment())\
+        .add_command([
             "echo",
             f"param1={param1}",
             f"param2={param2}",
             f"param3={param3}",
-        ],
-    ]
-
-    CommandExecutor(ctx).execute(command, log="project-task.log")
+        ])\
+        .execute("project-task.log")

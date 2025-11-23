@@ -18,11 +18,11 @@ def task(ctx, param1=False, param2="default text", param3=8):
     Task template (on linux)!
     """
 
-    command = [
-        "echo",
-        f"param1={param1}",
-        f"param2={param2}",
-        f"param3={param3}",
-    ]
-
-    CommandExecutor(ctx).execute(command, log="project-task.log")
+    CommandExecutor(ctx)\
+        .add_command([
+            "echo",
+            f"param1={param1}",
+            f"param2={param2}",
+            f"param3={param3}",
+        ])\
+        .execute("project-task.log")
