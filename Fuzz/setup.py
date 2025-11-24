@@ -29,7 +29,7 @@ def get_env_context():
 
     # work-spaces
     fuzz_dir = setup_dir_via_env("FUZZ_DIR", f"{__file__}/../")
-    git_dir = setup_dir_via_env("GIT_DIR", f"{fuzz_dir}/..")
+    setup_dir_via_env("GIT_DIR", f"{fuzz_dir}/..")
     setup_dir_via_env("CURRENT_INSTANCE_LOG", f"{fuzz_dir}/.generated")
 
     # add here additional env-variables which will be available via ctx (context) on each task

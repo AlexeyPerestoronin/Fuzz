@@ -55,7 +55,6 @@ def yapf(ctx):
         .execute(log="yapf.log")
 
 
-
 namespace = Collection()
 namespace.add_task(get_info, name="get-info")
 namespace.add_task(yapf, name="yapf")

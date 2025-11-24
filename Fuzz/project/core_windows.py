@@ -12,20 +12,27 @@ from utils.windows.environment_utils import activate_VS2019_environment
         "param1": "boolean parameter",
         "param2": "text parameter",
         "param3": "digit parameter",
+        "arg": "list argument - can be used multiple times in CLI",
     },
+    iterable=["arg"],
 )
 @print_task_documentation
-def task(ctx, param1=False, param2="default text", param3=8):
+def task(ctx, param1=False, param2="default text", param3=8, arg=None):
     """
     Task template (on windows)!
     """
 
+    command = [
+        "echo",
+        f"param1={param1}",
+        f"param2={param2}",
+        f"param3={param3}",
+    ]
+
+    if arg:
+        for a in arg:
+            command.append(f"arg={a}")
+
     CommandExecutor(ctx)\
         .add_command(activate_VS2019_environment())\
-        .add_command([
-            "echo",
-            f"param1={param1}",
-            f"param2={param2}",
-            f"param3={param3}",
-        ])\
-        .execute("project-task.log")
+        .add_command(command).execute("project-task.log")

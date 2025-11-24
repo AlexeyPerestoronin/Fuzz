@@ -18,15 +18,17 @@ else:
         "param1": "boolean parameter",
         "param2": "text parameter",
         "param3": "digit parameter",
+        "arg": "list argument - can be used multiple times in CLI",
     },
+    iterable=["arg"],
 )
 @print_task_documentation
-def full_check(ctx, param1=False, param2="default text", param3=8):
+def full_check(ctx, param1=False, param2="default text", param3=8, arg=None):
     """
     Project full check (template of combined task)!
     """
 
-    core.task(ctx, param1=param1, param2=param2, param3=param3)
+    core.task(ctx, param1=param1, param2=param2, param3=param3, arg=arg)
 
 
 collection = Collection("project")
